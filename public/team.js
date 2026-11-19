@@ -186,7 +186,7 @@
         '<p class="thanks-modal__eyebrow">Enviado</p>' +
         '<h2 class="thanks-modal__title">Gracias por leer y responder</h2>' +
         '<p class="thanks-modal__text">Tus resultados se han enviado correctamente. Que el mensaje de Jesús siga inspirando tu vida.</p>' +
-        '<button class="btn btn--primary" id="thanksClose">Cerrar</button>' +
+        '<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn btn--ghost" id="thanksClose">Cerrar</button><button class="btn btn--primary" id="thanksFinalize">Finalizar</button></div>' +
       '</div>';
     document.body.appendChild(modal);
     document.body.style.overflow = 'hidden';
@@ -196,6 +196,16 @@
     };
     modal.querySelector('#thanksClose').addEventListener('click', close);
     modal.querySelector('.thanks-modal__backdrop').addEventListener('click', close);
+
+    const finalizeBtn = modal.querySelector('#thanksFinalize');
+    if(finalizeBtn){
+      finalizeBtn.addEventListener('click', () => {
+        try{ localStorage.removeItem('proyecto_jesus_v1'); }catch(e){}
+        try{ localStorage.removeItem('proyecto_jesus_team_v1'); }catch(e){}
+        try{ localStorage.removeItem('proyecto_jesus_last_send'); }catch(e){}
+        window.location.href = '/';
+      });
+    }
   }
 
   function showToast(msg, type){

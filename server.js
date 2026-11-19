@@ -32,7 +32,7 @@ app.post('/api/results', async (req, res) => {
   const { team, quiz, reflections } = req.body;
   try {
     const result = await pool.query(
-      'INSERT INTO submissions (team, quiz, reflections) VALUES ($1::jsonb, $2::jsonb, $3::jsonb) RETURNING *',
+      'INSERT INTO submissions (created_at, team, quiz, reflections) VALUES (NOW(), $1::jsonb, $2::jsonb, $3::jsonb) RETURNING *',
       [JSON.stringify(team), JSON.stringify(quiz), JSON.stringify(reflections)]
     );
     res.status(201).json({ ok: true, entry: result.rows[0] });
