@@ -56,6 +56,17 @@ app.delete('/api/results/:id', async (req, res) => {
   }
 });
 
+// Rutas del panel admin
+app.get('/admin', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'results.html'));
+});
+app.get('/results', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'results.html'));
+});
+app.get('/results.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'results.html'));
+});
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
