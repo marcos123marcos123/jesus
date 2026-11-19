@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resultados — Proyecto Jesús</title>
+<meta name="description" content="Panel de resultados del cuestionario del Proyecto Jesús.">
+<link rel="stylesheet" href="results.css">
+</head>
+<body>
+<header class="r-topbar">
+  <div class="r-brand">
+    <span class="r-brand__mark" aria-hidden="true"></span>
+    <span class="r-brand__name">RESULTADOS</span>
+  </div>
+  <nav class="r-actions">
+    <a class="r-link" href="/">← Volver al recorrido</a>
+    <button class="r-btn" id="refreshBtn" type="button">Actualizar</button>
+  </nav>
+</header>
+
+<main class="r-main">
+  <section class="r-hero">
+    <p class="r-eyebrow">Panel de resultados</p>
+    <h1 class="r-title">Todos los envíos</h1>
+    <p class="r-sub">Cuestionario completado, reflexiones registradas y participantes por equipo.</p>
+  </section>
+
+  <section class="r-summary" id="summary" hidden>
+    <div class="r-card"><p class="r-card__label">Total de envíos</p><p class="r-card__value" id="totalSends">0</p></div>
+    <div class="r-card"><p class="r-card__label">Participantes</p><p class="r-card__value" id="totalPeople">0</p></div>
+    <div class="r-card"><p class="r-card__label">Promedio</p><p class="r-card__value" id="avgScore">—</p></div>
+    <div class="r-card"><p class="r-card__label">Mejor puntaje</p><p class="r-card__value" id="bestScore">—</p></div>
+  </section>
+
+  <section class="r-table-wrap">
+    <div class="r-empty" id="empty" hidden>
+      <p>Todavía no hay envíos.</p>
+      <p class="r-empty__hint">Cuando alguien complete el cuestionario y pulse «Enviar resultados», aparecerá aquí.</p>
+    </div>
+    <table class="r-table" id="table" hidden>
+      <thead>
+        <tr><th>#</th><th>Equipo</th><th>Resultado</th><th>Reflexiones</th><th>Fecha</th><th></th></tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </section>
+</main>
+
+<div class="r-modal" id="detail" aria-hidden="true">
+  <div class="r-modal__backdrop" data-close></div>
+  <div class="r-modal__panel" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+    <button class="r-modal__close" data-close aria-label="Cerrar">×</button>
+    <p class="r-eyebrow" id="detailTag">Detalle</p>
+    <h2 class="r-modal__title" id="detailTitle"></h2>
+    <div class="r-modal__body" id="detailBody"></div>
+  </div>
+</div>
+
+<script src="results.js"></script>
+</body>
+</html>
